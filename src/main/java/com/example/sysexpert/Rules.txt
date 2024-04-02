@@ -1,0 +1,20 @@
+DISQUE DUR NON RECONNU
+Vérifiez les connexions SATA/IDE, assurez-vous que le disque est alimenté, testez sur un autre port, vérifiez dans le BIOS.
+ÉCRAN BLEU DE LA MORT
+Recherchez le code d'erreur, redémarrez en mode sans échec, vérifiez les pilotes, exécutez des outils de diagnostic système.
+AUCUN SON
+Vérifiez le volume et les connexions des haut-parleurs, mettez à jour les pilotes audio, exécutez le dépannage audio de Windows.
+WIFI NE FONCTIONNE PAS
+Redémarrez le routeur, vérifiez les paramètres de sécurité, désactivez puis réactivez la carte réseau, mettez à jour les pilotes.
+LENT PERFORMANCE DU PC
+Supprimez les fichiers temporaires, défragmentez le disque dur, désinstallez les programmes inutilisés, ajoutez de la RAM si nécessaire.
+IMPRIMANTE NE RÉPOND PAS
+Vérifiez les connexions USB ou réseau, redémarrez l'imprimante, effacez les files d'attente d'impression, réinstallez les pilotes.
+PERTE DE DONNÉES
+Utilisez des logiciels de récupération de données, vérifiez les sauvegardes, évitez d'écrire de nouvelles données sur le disque affecté.
+BATTERIE D'ORDINATEUR PORTABLE NE CHARGE PAS
+Vérifiez les connexions et l'état du câble d'alimentation, nettoyez les ports de charge, recalibrez la batterie si possible.
+CURSEUR DE LA SOURIS GELÉ
+Vérifiez les piles de la souris, branchez-la sur un autre port USB, redémarrez l'ordinateur, mettez à jour les pilotes.
+FENÊTRES POP-UP INDÉSIRABLES
+Exécutez des scans antivirus et anti-malware, évitez les sites web suspects, utilisez un bloqueur de publicités.
