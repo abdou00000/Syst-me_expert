@@ -28,3 +28,22 @@ Users can simply launch the application and follow the prompts to input their PC
 
 ## Expert Session: 
 Experts need to log in with their credentials to access the expert interface. From there, they can manage rules as needed, ensuring that the system remains robust and adaptable.
+
+# Images:
+
+## Welcome page:
+
+![Capture d'écran 2024-04-02 023825](https://github.com/abdou00000/Syst-me_expert/assets/162928474/e5ceaa76-352f-412a-b5ea-06518f2650cf)
+
+## User session:
+![Capture d'écran 2024-04-02 023920](https://github.com/abdou00000/Syst-me_expert/assets/162928474/33c40ac8-7746-49a6-9b0b-142754286c05)
+
+![Capture d'écran 2024-04-02 024030](https://github.com/abdou00000/Syst-me_expert/assets/162928474/f6b6fbed-6bc5-4b47-8124-d4767c6f600c)
+
+## Expert sign in page:
+
+![Capture d'écran 2024-04-02 023857](https://github.com/abdou00000/Syst-me_expert/assets/162928474/f993e3f3-1ed9-40b2-89d5-52c6f81afca4)
+
+## Expert Session:
+
+![Capture d'écran 2024-04-02 024116](https://github.com/abdou00000/Syst-me_expert/assets/162928474/0d193779-d826-4009-9e60-e6dc645e5e57)
