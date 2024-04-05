@@ -13,14 +13,7 @@ The development environment for this project is IntelliJ IDEA, a powerful integr
 Users can access a user-friendly interface to input their PC problems. The system utilizes a set of predefined rules stored in a rules file to analyze the issues and provide relevant solutions.
 
 ## Expert Session: 
-Experts have privileged access to the system, allowing them to add, modify, or delete rules in the rules file. This ensures that the system remains up-to-date and adaptable to evolving troubleshooting scenarios.
-
-# Usage:
-## User Session: 
-Users can simply launch the application and follow the prompts to input their PC problems. The system will then provide recommended solutions based on the rules file.
-
-## Expert Session: 
-Experts need to log in with their credentials to access the expert interface (the credentials can be found in ' Utilisateurs.txt '. From there, they can manage rules as needed, ensuring that the system remains robust and adaptable.
+Experts have privileged access to the system using their credentials to access the expert interface (the credentials can be found in ' Utilisateurs.txt ') , allowing them to add, modify, or delete rules in the rules file. This ensures that the system remains up-to-date and adaptable to evolving troubleshooting scenarios.
 
 # Images:
 
