@@ -17,6 +17,10 @@ public class Expert {
     Scene scene;
     @FXML
     Label rulesLabel;
+    @FXML
+    Label MessageLabel;
+    @FXML
+    TextField EnonceRegle;
 
     @FXML
     TextField NomRegle;
@@ -33,7 +37,6 @@ public class Expert {
     }
 
     String result = "";
-    StringBuilder conclusionsConcatenated = new StringBuilder();
     @FXML
     public void OnAfficher(ActionEvent event) throws IOException {
         StringBuilder conclusionsConcatenated = new StringBuilder();
@@ -53,65 +56,110 @@ public class Expert {
         rulesLabel.setText(result);
     }
 
+
     @FXML
-    private void OnModifier(ActionEvent event)throws IOException{
-        String str = NomRegle.getText().toUpperCase();
-        if (getLineNumber(filePath , str) != 0){
-            
-        }
+    private void OnSupprimer(ActionEvent event) throws IOException {
+        if (!NomRegle.getText().isBlank()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(filePath));) {
+                StringBuilder content = new StringBuilder();
+                String line;
+                String str = NomRegle.getText().toUpperCase();
+                boolean regleFound = false;
 
 
-    }
-
-    // Fonction pour supprimer une ligne d'un fichier texte
-    public static void deleteLineFromFile(String filePath, int lineNumber) throws IOException {
-        String tempFile = "temp.txt";
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath));
-             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
-            String line;
-            int currentLineNumber = 0;
-            while ((line = reader.readLine()) != null) {
-                currentLineNumber++;
-                if (currentLineNumber != lineNumber) {
-                    writer.write(line);
-                    writer.newLine();
+                while ((line = reader.readLine()) != null) {
+                    if (!line.equalsIgnoreCase(str)) {
+                        content.append(line).append("\n");
+                    } else {
+                        regleFound = true;
+                        reader.readLine();
+                    }
                 }
+
+                if (regleFound) {
+                    // Write the modified content back to the file
+                    try (FileWriter writer = new FileWriter(filePath)) {
+                        writer.write(content.toString());
+                        // Display a success message
+                        MessageLabel.setText("La régle a été Supprimée!");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        // Display an error message if writing fails
+                        MessageLabel.setText("Failed to modify line!");
+                    }
+                } else {
+                    // Display a message if the old line was not found
+                    MessageLabel.setText("Règle non trouvée , essayez encore (cliquez sur 'afficher les règles' pour consulter les règles existantes)");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-        // Remplacer le fichier d'origine par le fichier temporaire
-        new File(tempFile).renameTo(new File(filePath));
+
+        else MessageLabel.setText("Pour pouvoir supprimer une règle, entrez son nom (cliquez sur 'afficher les règles' pour consulter les règles existantes)");
     }
 
-    public static int getLineNumber(String filePath, String str) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            int lineNumber = 0;
-            // Loop through each line in the file
-            while ((line = reader.readLine()) != null) {
-                lineNumber++;
-                // Check if the line matches the entered string
-                if (line.equals(str)) {
-                    return lineNumber;
+
+    @FXML
+    private void OnModifier(ActionEvent event) {
+        if (NomRegle.getText().isBlank() == false && EnonceRegle.getText().isBlank() == false) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+                StringBuilder content = new StringBuilder();
+                String line;
+                boolean regleFound = false;
+                String str = NomRegle.getText().toUpperCase();
+                String newLine = EnonceRegle.getText();
+
+                while ((line = reader.readLine()) != null) {
+                    if (line.equals(str)) {
+                        regleFound = true;
+                        content.append(line).append("\n");
+                        reader.readLine();
+                        content.append(newLine).append("\n");
+                    } else {
+                        // Keep the line unchanged
+                        content.append(line).append("\n");
+                    }
                 }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // If the line is not found
-        return 0;
-    }
-
-
-    public static String readLineFromFile(String path, int lineNumber) throws IOException {
-        String line = null;
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
-            int currentLineNumber = 0;
-            while ((line = reader.readLine()) != null) {
-                if (++currentLineNumber == lineNumber) {
-                    return line;
+                if (regleFound) {
+                    // Write the modified content back to the file
+                    try (FileWriter writer = new FileWriter(filePath)) {
+                        writer.write(content.toString());
+                        // Display a success message
+                        MessageLabel.setText("La régle a été modifiée!");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        // Display an error message if writing fails
+                        MessageLabel.setText("Failed to modify line!");
+                    }
+                } else {
+                    // Display a message if the old line was not found
+                    MessageLabel.setText("Règle non trouvée , essayez encore (cliquez sur 'afficher les règles' pour consulter les règles existantes)");
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-        return line;
+        else MessageLabel.setText("Pour pouvoir modifier une règle, entrez son nom puis son nouveau enoncé");
     }
+
+
+    @FXML
+    private void OnAjouter(ActionEvent event){
+        if (NomRegle.getText().isBlank() == false && EnonceRegle.getText().isBlank() == false) {
+            try (FileWriter writer = new FileWriter(filePath , true)) {
+                String str = NomRegle.getText().toUpperCase();
+                String newLine = EnonceRegle.getText();
+                writer.write(str + "\n" + newLine + "\n");
+
+                MessageLabel.setText("La régle a été ajoutée!");
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Display an error message if writing fails
+                MessageLabel.setText("Failed to add the rule!");
+            }
+        }
+        else MessageLabel.setText("Pour pouvoir ajouter une règle, entrez son nom puis son enoncé");
+    }
+
 }
